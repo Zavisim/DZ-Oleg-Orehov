@@ -59,6 +59,5 @@ if __name__ == "__main__":
 
     # Вывод информации о пользователях
     print(admin.get_info())  # Username: AdminUser, Email: admin@example.com (Role: Admin)
-    print(
-        moderator.get_info())  # Username: ModUser, Email: moderator@example.com (Role: Moderator, Sections: Tech, Gaming)
+    print(moderator.get_info())  # Username: ModUser, Email: moderator@example.com (Role: Moderator, Sections: Tech, Gaming)
     print(user.get_info())  # Username: RegularUser, Email: user@example.com (Role: Regular User)
