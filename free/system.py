@@ -8,7 +8,7 @@ class User:
 
 
 class Admin(User):
-    def delete_user(self):
+    def delete_user(self, user: User):
         print(f"{self.username} has been deleted by admin {self.username}.")
 
     def get_info(self):
@@ -42,25 +42,23 @@ class RegularUser(User):
 
 
 if __name__ == "__main__":
-    # Create users
-    admin = Admin("admin1", "admin1@example.com")
-    moderator = Moderator("mod1", "mod1@example.com")
-    user = RegularUser("user1", "user1@example.com")
+    # Создаем пользователей
+    admin = Admin("AdminUser", "admin@example.com")
+    moderator = Moderator("ModUser", "moderator@example.com")
+    user = RegularUser("RegularUser", "user@example.com")
 
-    # Display user info
-    print(admin.get_info())
-    print(moderator.get_info())
-    print(user.get_info())
+    # Добавляем секции модератору
+    moderator.add_section("Tech")
+    moderator.add_section("Gaming")
 
-    # Admin deletes a user
+    # Пользователь публикует комментарий
+    user.post_comment("Tech", "This is a great article!")
+
+    # Администратор удаляет пользователя
     admin.delete_user(user)
 
-    # Moderator manages sections
-    moderator.add_section("Sports")
-    moderator.add_section("Technology")
-    print(moderator.get_info())
-    moderator.remove_section("Sports")
-    print(moderator.get_info())
-
-    # Regular user posts a comment
-    user.post_comment("Technology", "Great article!")
+    # Вывод информации о пользователях
+    print(admin.get_info())  # Username: AdminUser, Email: admin@example.com (Role: Admin)
+    print(
+        moderator.get_info())  # Username: ModUser, Email: moderator@example.com (Role: Moderator, Sections: Tech, Gaming)
+    print(user.get_info())  # Username: RegularUser, Email: user@example.com (Role: Regular User)
