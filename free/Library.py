@@ -36,7 +36,7 @@ class TestLibrary:
         """Пытался сделать через один assert, не уверен, что получилось лучше"""
         assert (
                 "1984" in library.catalog and
-                library.catalog["1984"] == {"author": "George Orwell", "count": 1}
+                library.catalog["1984"] == {"author": "George Orwell"}
         )
 
     def test_add_replace_book(self, library: Library):
