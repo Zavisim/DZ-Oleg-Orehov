@@ -43,6 +43,8 @@ class Order:
 
     def complete_order(self):
         total_cost = self.calculate_total()
+        if self.user.balance < total_cost:
+            raise ValueError("Insufficient balance")  # <-- Добавляем выброс исключения
         self.user.balance -= total_cost
         self.status = "Completed"
 
@@ -95,7 +97,7 @@ if __name__ == "__main__":
     shop.add_product(product2)
 
     # Создаем пользователя
-    user = User("Alice", "alice@example.com", 1500)
+    user = User("Alice", "alice@example.com", 2500)
 
     # Создаем заказ
     order = shop.create_order(user)
